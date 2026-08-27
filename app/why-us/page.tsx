@@ -1,0 +1,13 @@
+import { contact, images, whyCards } from "../content";
+import { PageHero, QuoteCta, SiteFooter, SiteHeader } from "../site-components";
+
+const mixed = ["Medicines and first aid consumables", "Gloves, masks and dressings", "Dustbins and cleaning material", "Reflective jackets and helmets", "Stationery, files and printer supplies", "LED fittings and electrical items"];
+
+export default function WhyUsPage() {
+  return <><SiteHeader active="why" /><main><PageHero eyebrow="Why Us" title="Why buyers work with Nishant Pharma" image={images.warehouse} />
+    <section className="section-pad"><div className="shell"><div className="numbered-grid">{whyCards.map(([title, copy], i) => <article key={title}><span>{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>
+    <section className="section-pad section-soft"><div className="shell practical-grid"><div><p className="eyebrow">The Practical Difference</p><h2>Six vendors, or one</h2><p>A mixed requirement list usually means separate enquiries, separate quotations, separate follow ups and separate deliveries. Consolidating categories through one supplier reduces that coordination work considerably.</p><p>It also means one contact who already knows your previous orders, your preferred specifications and how your department likes to receive quotations.</p></div><aside><h3>Typical Mixed List</h3><ul>{mixed.map(item => <li key={item}>{item}</li>)}</ul><p>Six categories, one enquiry, one quotation and one point of contact.</p></aside></div></section>
+    <section className="section-pad"><div className="shell"><div className="section-heading split-heading"><div><p className="eyebrow">Talk To Us</p><h2>Three ways to reach us</h2></div><p>Whichever you choose, the same person handles your enquiry from quotation to dispatch.</p></div><div className="contact-methods"><article><span>01</span><h3>WhatsApp</h3><p>Fastest for requirement lists, photographs of items and quick clarifications.</p><a href={contact.whatsapp} target="_blank" rel="noreferrer">Start a chat</a></article><article><span>02</span><h3>Phone</h3><p>Best when you want to talk an item specification through directly.</p><a href={contact.phoneHref}>{contact.phone}</a></article><article><span>03</span><h3>Email</h3><p>Suited to formal requirement lists, tender documents and written quotations.</p><a href={`mailto:${contact.email}`}>Email us</a></article></div></div></section>
+    <QuoteCta title="Put us to the test with your next requirement list" copy="Send it across and compare our response time, coverage and pricing." />
+  </main><SiteFooter /></>;
+}
